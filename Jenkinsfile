@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/dtitiloye/uber-clone.git'
+                git branch: 'main', url: 'https://github.com/adetit/uber-clone.git'
             }
         }
         
