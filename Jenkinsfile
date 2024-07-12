@@ -40,7 +40,7 @@ pipeline {
         stage('Checkov security scan') {
             steps {
                 dir('EKS_Terraform') {
-                    // Run Checkov security scan
+                    // Activate virtual environment if needed
                     sh 'checkov -d .'
                 }
             }
