@@ -2,11 +2,11 @@ pipeline {
     agent any
     
     environment {
-        PATH = "/usr/local/bin:/usr/bin:/bin:/home/ubuntu/.local/bin"
         AWS_ACCOUNT_ID = credentials('account_id')
         AWS_DEFAULT_REGION = "us-east-1"
         AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
         AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+        PATH = "/usr/local/bin:/usr/bin:/bin:/home/ubuntu/.local/bin"
     }
     
     stages {
@@ -41,7 +41,7 @@ pipeline {
         stage('Checkov security scan') {
             steps {
                 dir('EKS_Terraform') {
-                    sh 'checkov -d .'
+                    sh '/home/ubuntu/.local/bin/checkov -d .'
                 }
             }
         }
