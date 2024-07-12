@@ -2,6 +2,7 @@ pipeline {
     agent any
     
     environment {
+        PATH = "/usr/local/bin:/usr/bin:/bin:/home/ubuntu/.local/bin"
         AWS_ACCOUNT_ID = credentials('account_id')
         AWS_DEFAULT_REGION = "us-east-1"
         AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
@@ -40,7 +41,6 @@ pipeline {
         stage('Checkov security scan') {
             steps {
                 dir('EKS_Terraform') {
-                    // Activate virtual environment if needed
                     sh 'checkov -d .'
                 }
             }
